@@ -25,7 +25,7 @@ const generateHTML = (employeeList) => {
         <p>Id: ${id}</p>
         </row>
         <row class="row">
-        <p>Email: <a href= "csara@gmail.com">${email}</a></p>
+        <p>Email: <a href="mailto:${email}">${email}</a></p>
         </row>
         <row class="row">
         <p>Number: ${officeNumber}</p>
@@ -48,10 +48,10 @@ const generateHTML = (employeeList) => {
         <p>Id: ${id}</p>
         </row>
         <row class="row">
-        <p><a href= "${email}">Email: ${email}</a></p>
+        <p>Email: <a href="mailto:${email}">${email}</a></p>
         </row>
         <row class="row">
-        <p>GitHub: <link href= "${github}">${github}</link></p>
+        <p>GitHub: <a href="https://github.com/${github}" target="_blank">${github}</a></p>
         </row>
       </div>
       </div>`;
@@ -72,7 +72,7 @@ const generateHTML = (employeeList) => {
         <p>Id: ${id}</p>
         </row>
         <row class="row">
-        <p>Email: <a href= "${email}">${email}</a></p>
+        <p>Email: <a href="mailto:${email}">${email}</a></p>
         </row>
         <row class="row">
         <p>School: ${school}</p>

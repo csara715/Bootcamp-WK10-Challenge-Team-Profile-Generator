@@ -1,0 +1,84 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1;
+  }
+  
+  h1, h2, h3, h4 {
+    font-weight: bolder;
+  }
+
+  main {
+    margin-left: 20px;
+    display: flex;
+    flex-wrap: wrap;
+  }  
+
+  
+  .card {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+    border: 2px solid darkblue;
+    background-color: lightcyan;
+    color: darkblue;
+    max-width: 275px;
+    min-width: 275px;
+    min-height: 300px;
+    margin: 5px 30px 40px 30px;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    position: center;
+    padding: 5px;
+    border: 1px solid darkcyan;
+    margin-bottom: 1px;
+  
+  }
+  
+  .jumbotron {
+    text-align: center;
+    background-color: cyan;
+    color: darkblue;
+    border-radius: 0;
+    border-bottom: 5px solid darkblue;
+    font-weight: bolder;
+  }
+  
+  .submit-btn {
+    display: flex;
+    border-radius: 5px;
+    padding: 8px;
+    color: darkblue;
+    border: solid 1px darkblue;
+    background-color: lightcyan;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .bottom-border {
+    border-bottom: solid 3px darkblue;
+  }
+  
+  
+  @media screen and (min-width: 1200px) {
+    body {
+      width: 20%;
+    }
+  }
+  
+  @media screen and (min-width: 992px) {
+    body {
+      width: 75%;
+    }
+  }
+  
+  @media screen and (min-width: 768px) {
+    body {
+      width: 100%;
+    }
+  }

@@ -1,5 +1,6 @@
 const Intern = require("../lib/Intern");
 
+// Test that an intern object is created with the following properties and methods
 describe("Intern", () => {
   describe("Intern constructor", () => {
     it("should create an object with an employee name, id, email, and school", () => {

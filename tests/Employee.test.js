@@ -1,5 +1,5 @@
 const Employee = require("../lib/Employee");
-
+// Test that an employee object is created with the following properties and methods
 describe("Employee", () => {
   describe("Employee constructor", () => {
     it("should create an object with an employee name, id and email", () => {

@@ -1,5 +1,6 @@
 const Engineer = require("../lib/Engineer");
 
+// Test that an engineer object is created with the following properties and methods
 describe("Engineer", () => {
   describe("Engineer constructor", () => {
     it("should create an object with an employee name, id, email, and GitHub username", () => {

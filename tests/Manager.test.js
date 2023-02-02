@@ -1,5 +1,6 @@
 const Manager = require("../lib/Manager");
 
+// Test that a manager object is created with the following properties and methods
 describe("Manager", () => {
   describe("Manager constructor", () => {
     it("should create an object with an employee name, id, email, and office number", () => {

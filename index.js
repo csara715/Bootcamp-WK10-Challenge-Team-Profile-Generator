@@ -14,6 +14,7 @@ const questionTitle = [
   "your intern's",
 ];
 
+//Array of employee questions
 const employeeQuestions = [
   {
     type: "list",
@@ -107,6 +108,7 @@ const employeeQuestions = [
   },
 ];
 
+// Array of Manager questions
 const managerQuestions = [
   {
     type: "input",
@@ -135,6 +137,7 @@ async function init() {
   console.log("Use `npm run reset` to reset the dist/ folder.\n");
   console.log("Please build your team!!!\n");
 
+  // inquirer prompt for manager information
   inquirer.prompt(managerQuestions).then((answers) => {
     const manager = new Manager(
       answers.employeeName,
@@ -142,7 +145,10 @@ async function init() {
       answers.email,
       answers.phoneNumber
     );
+    // Add manager to employee list
     employeeList.push(manager);
+
+    // Inquirer prompt for employee questions with fork for engineer and intern
     inquirer.prompt(employeeQuestions).then((answers) => {
       const employee = new Employee(answers);
       if (answers.employeeType === "Engineer") {
@@ -170,6 +176,7 @@ async function init() {
             answers.email,
             answers.gitHub
           );
+          // Push engineer to employee list
           employeeList.push(engineer);
         } else if (answers.employeeType === "Intern") {
           const intern = new Intern(
@@ -178,7 +185,9 @@ async function init() {
             answers.email,
             answers.school
           );
+          // Push intern to employee list
           employeeList.push(intern);
+          // Call generateHTML function and create html file when user is finished inputing employees
         } else if (answers.employeeType === "") {
           console.log("I don't want to add anymore team members.");
 
@@ -190,12 +199,14 @@ async function init() {
               : console.log("Successfully created index.html!")
           );
         }
+        // Call recursive function to continue prompting for employee information until user is finished
         getEmployee(answers.employeeType);
       });
     });
   });
 }
 
+//Recursive asyn/await function to loop through employee inquirer prompt until user is finished
 async function getEmployee(employeeType) {
   while (employeeType !== "") {
     await inquirer.prompt(employeeQuestions).then((answers) => {

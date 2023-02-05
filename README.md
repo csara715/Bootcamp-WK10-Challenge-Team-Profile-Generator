@@ -40,4 +40,7 @@ The following image shows a mock-up of the generated HTML’s appearance and fun
 Link to video demonstration:
 
 - https://drive.google.com/file/d/1lTlJJQ8cNSKqUhDXqLFal4pjogAe3qen/view
+
+GitHub Repository:
+
 - https://csara715.github.io/Bootcamp-WK10-Challenge-Team-Profile-Generator/

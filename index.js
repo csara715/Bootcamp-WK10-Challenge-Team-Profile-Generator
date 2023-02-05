@@ -20,14 +20,14 @@ const employeeQuestions = [
     type: "list",
     name: "employeeType",
     message: "Which type of team member would you like to add?",
-    choices: ["", "Engineer", "Intern"],
+    choices: ["Finish add members", "Engineer", "Intern"],
   },
   {
     type: "input",
     name: "employeeName",
     message: `What is ${questionTitle[1]} name?`,
     when: (answers) => {
-      if (answers.employeeType === "") {
+      if (answers.employeeType === "Finish add members") {
         return false;
       } else if (answers.employeeType === "Engineer") {
         return true;
@@ -69,7 +69,7 @@ const employeeQuestions = [
     name: "employeeName",
     message: `What is ${questionTitle[2]} name?`,
     when: (answers) => {
-      if (answers.employeeType === "") {
+      if (answers.employeeType === "Finish add members") {
         return false;
       } else if (answers.employeeType === "Intern") {
         return true;
@@ -151,14 +151,17 @@ async function init() {
     // Inquirer prompt for employee questions with fork for engineer and intern
     inquirer.prompt(employeeQuestions).then((answers) => {
       const employee = new Employee(answers);
-      if (answers.employeeType === "Engineer") {
-        const engineer = new Engineer(
-          answers.employeeName,
-          answers.id,
-          answers.email,
-          answers.gitHub
+      if (answers.employeeType === "Finish add members") {
+        console.log("I don't want to add anymore team members.");
+
+        const htmlPageContent = generateHTML(employeeList);
+
+        fs.writeFile("./dist/index.html", htmlPageContent, (err) =>
+          err
+            ? console.log(err)
+            : console.log("Successfully created index.html!")
         );
-        employeeList.push(engineer);
+        return false;
       } else if (answers.employeeType === "Intern") {
         const intern = new Intern(
           answers.employeeName,
@@ -167,7 +170,16 @@ async function init() {
           answers.school
         );
         employeeList.push(intern);
+      } else if (answers.employeeType === "Engineer") {
+        const engineer = new Engineer(
+          answers.employeeName,
+          answers.id,
+          answers.email,
+          answers.gitHub
+        );
+        employeeList.push(engineer);
       }
+
       inquirer.prompt(employeeQuestions).then((answers) => {
         if (answers.employeeType === "Engineer") {
           const engineer = new Engineer(
@@ -188,7 +200,7 @@ async function init() {
           // Push intern to employee list
           employeeList.push(intern);
           // Call generateHTML function and create html file when user is finished inputing employees
-        } else if (answers.employeeType === "") {
+        } else if (answers.employeeType === "Finish add members") {
           console.log("I don't want to add anymore team members.");
 
           const htmlPageContent = generateHTML(employeeList);
@@ -208,7 +220,7 @@ async function init() {
 
 //Recursive asyn/await function to loop through employee inquirer prompt until user is finished
 async function getEmployee(employeeType) {
-  while (employeeType !== "") {
+  while (employeeType !== "Finish add members") {
     await inquirer.prompt(employeeQuestions).then((answers) => {
       employeeType = answers.employeeType;
       if (answers.employeeType === "Engineer") {
@@ -227,7 +239,7 @@ async function getEmployee(employeeType) {
           answers.school
         );
         employeeList.push(intern);
-      } else if (answers.employeeType === "") {
+      } else if (answers.employeeType === "Finish add members") {
         console.log("I don't want to add anymore team members.");
 
         const htmlPageContent = generateHTML(employeeList);

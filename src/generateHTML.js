@@ -5,8 +5,6 @@ let employeeCards = "";
 
 const generateHTML = (employeeList) => {
   const length = Object.keys(employeeList).length;
-  console.log(employeeList[1].getRole());
-  console.log(employeeList[2].getName());
 
   //Loop through employee list and build a card for each employee based on role and add html
   for (let i = 0; i < length; i++) {
